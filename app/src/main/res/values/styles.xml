@@ -1,11 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--标题栏的颜色-->
+        <item name="colorPrimary">@android:color/holo_blue_bright</item>
+        <!--状态栏的颜色-->
+        <item name="colorPrimaryDark">@android:color/background_dark</item>
+        <!--控件的选中颜色，即checked或selected状态的颜色。-->
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 </resources>

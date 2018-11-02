@@ -4,8 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.taoge.freereader.base.BaseActivity;
 import com.taoge.freereader.base.BaseFragment;
@@ -21,10 +24,14 @@ import com.taoge.freereader.util.BottomNavigationViewHelper;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements
-        BottomNavigationView.OnNavigationItemSelectedListener, MainContract.View {
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        MainContract.View, View.OnClickListener {
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView navigationView;
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
 
     private MainContract.Presenter mPresenter;
@@ -39,8 +46,37 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void initView() {
         BottomNavigationViewHelper.disableShiftMode(navigationView);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
+
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+           /* case android.R.id.home:
+                this.finish();
+                break;*/
+
+
+            case R.id.action_search:
+                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.action_settings:
+                Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void initData() {
@@ -130,4 +166,9 @@ public class MainActivity extends BaseActivity implements
     }
 
 
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, "有点急", Toast.LENGTH_SHORT).show();
+
+    }
 }

@@ -13,7 +13,7 @@ import butterknife.Unbinder;
  * <p>
  * email：xxx@163.com
  */
-public abstract class BaseActivity extends FragmentActivity{
+public abstract class BaseActivity extends AppCompatActivity{
 
     protected Unbinder mUnbind;
 

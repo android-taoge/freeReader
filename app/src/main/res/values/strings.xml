@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FreeReader</string>
+    <string name="app_name">畅读</string>
+    <string name="menu_main_settings">设置</string>
 </resources>
