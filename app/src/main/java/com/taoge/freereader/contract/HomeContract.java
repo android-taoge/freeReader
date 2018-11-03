@@ -1,6 +1,5 @@
 package com.taoge.freereader.contract;
 
-import com.google.gson.JsonObject;
 import com.taoge.freereader.base.IBaseModel;
 import com.taoge.freereader.base.IBaseView;
 import com.taoge.freereader.bean.BookCategory;

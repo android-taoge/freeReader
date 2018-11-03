@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.taoge.freereader.R;
 import com.taoge.freereader.base.BaseFragment;
@@ -84,7 +85,7 @@ public class HomeFragment extends MvpBaseFragment<HomePresenter> implements Home
 
     @Override
     public void showMsg(String msg) {
-
+        Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
     }
 
 

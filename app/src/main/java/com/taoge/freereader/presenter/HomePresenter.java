@@ -49,7 +49,10 @@ public class HomePresenter extends BasePresenter<HomeContract.View>
 
                     @Override
                     public void onError(Throwable e) {
+                        if(mViewRef.get()!=null){
+                            mViewRef.get().showMsg(e.toString());
 
+                        }
                     }
 
                     @Override
