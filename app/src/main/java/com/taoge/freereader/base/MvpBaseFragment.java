@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
  * <p>
  * email：xxx@163.com
  */
-public abstract class MvpBaseFragment<V, P extends BasePresenter<V>> extends BaseFragment {
+public abstract class MvpBaseFragment<P extends BasePresenter> extends BaseFragment implements IBaseView{
     private static final String TAG = MvpBaseFragment.class.getSimpleName() + "";
     protected P mPresenter;
 
@@ -16,7 +16,7 @@ public abstract class MvpBaseFragment<V, P extends BasePresenter<V>> extends Bas
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = createPresenter();//创建Presenter
-        mPresenter.attachView((V) this);
+        mPresenter.attachView(this);
     }
 
     @Override

@@ -6,9 +6,13 @@ package com.taoge.freereader.base;
  * <p>
  * email：xxx@163.com
  */
-public interface IBaseView<Data>{
+public interface IBaseView{
 
     void showLoading();
 
-    void showDada(Data data);
+    void hideLoading();
+
+    void showError();
+
+    void showMsg(String msg);
 }

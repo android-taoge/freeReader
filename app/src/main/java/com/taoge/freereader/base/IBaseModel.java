@@ -5,11 +5,7 @@ package com.taoge.freereader.base;
  * <p>
  * email：xxx@163.com
  */
-public interface IBaseModel<Data> {
+public interface IBaseModel {
 
-    void loadData(OnDataLoadCompleteListener<Data> loadCompleteListener);
 
-    interface OnDataLoadCompleteListener<Data> {
-        void onLoadComplete(Data data);
-    }
 }

@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
  * <p>
  * email：xxx@163.com
  */
-public abstract class BasePresenter<V> {
+public abstract class BasePresenter<V extends IBaseView> {
 
 
     protected Reference<V> mViewRef;//View 接口类型的弱引用
@@ -34,8 +34,8 @@ public abstract class BasePresenter<V> {
 
     //每个Presenter都会有初始化的工作，可以在这里统一处理
     // 当然也可以不处理，这里只是一个公用的示范方法
-    public abstract void start();
+    //public abstract void start();
 
     //这里也可以理解为一个公用的示范方法
-    public abstract void update();
+    //public abstract void update();
 }

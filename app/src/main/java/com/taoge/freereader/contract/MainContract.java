@@ -1,8 +1,10 @@
 package com.taoge.freereader.contract;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
+
+import com.taoge.freereader.base.BasePresenter;
+import com.taoge.freereader.base.IBaseModel;
+import com.taoge.freereader.base.IBasePresenter;
+import com.taoge.freereader.base.IBaseView;
 
 
 /**
@@ -13,23 +15,21 @@ import android.support.v4.app.FragmentTransaction;
 public interface MainContract {
 
 
-    interface View {
+    interface View extends IBaseView{
 
 
         void showMessage(String msg);
     }
 
-    interface Presenter {
 
-        void initData();
-
-        void showMessage(String msg);
+    //作为BasePresenter的功能扩展接口
+    interface Presenter  {
 
 
     }
 
 
-    interface Model {
+    interface Model{
 
     }
 }

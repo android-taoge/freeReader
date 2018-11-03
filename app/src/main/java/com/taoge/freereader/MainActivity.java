@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.taoge.freereader.base.BaseActivity;
 import com.taoge.freereader.base.BaseFragment;
+import com.taoge.freereader.base.MvpBaseActivity;
 import com.taoge.freereader.contract.MainContract;
 import com.taoge.freereader.presenter.MainPresenter;
 import com.taoge.freereader.ui.CategoryFragment;
@@ -23,7 +24,7 @@ import com.taoge.freereader.util.BottomNavigationViewHelper;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements
+public class MainActivity extends MvpBaseActivity<MainPresenter> implements
         BottomNavigationView.OnNavigationItemSelectedListener,
         MainContract.View, View.OnClickListener {
 
@@ -84,8 +85,7 @@ public class MainActivity extends BaseActivity implements
         transaction.add(R.id.main_content, currentFragment)
                 .show(currentFragment).
                 commit();
-        mPresenter = new MainPresenter(this);
-        mPresenter.initData();
+
 
 
     }
@@ -170,5 +170,30 @@ public class MainActivity extends BaseActivity implements
     public void onClick(View view) {
         Toast.makeText(this, "有点急", Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showMsg(String msg) {
+
+    }
+
+    @Override
+    protected MainPresenter createPresenter() {
+        return new MainPresenter();
     }
 }

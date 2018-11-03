@@ -11,19 +11,18 @@ import butterknife.Unbinder;
  * <p>
  * email：xxx@163.com
  */
-public abstract class MvpBaseActivity<V,P extends BasePresenter<V>> extends BaseActivity{
+public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActivity implements IBaseView{
 
     protected P mPresenter;
 
-    protected Unbinder mUnbind;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUnbind = ButterKnife.bind(this);
         mPresenter=createPresenter();
-        mPresenter.attachView((V) this);
+        mPresenter.attachView(this);
     }
+
 
 
     protected abstract P createPresenter();
@@ -31,7 +30,6 @@ public abstract class MvpBaseActivity<V,P extends BasePresenter<V>> extends Base
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mUnbind.unbind();
         mPresenter.detachView();
     }
 }

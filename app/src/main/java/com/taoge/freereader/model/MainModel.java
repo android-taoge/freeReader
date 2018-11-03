@@ -10,9 +10,6 @@ import com.taoge.freereader.presenter.MainPresenter;
  */
 public class MainModel implements MainContract.Model {
 
-    private MainPresenter mPresenter;
 
-    public MainModel(MainPresenter presenter) {
-        this.mPresenter=presenter;
-    }
+
 }
