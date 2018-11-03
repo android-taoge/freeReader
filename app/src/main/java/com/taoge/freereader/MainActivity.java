@@ -34,8 +34,6 @@ public class MainActivity extends MvpBaseActivity<MainPresenter> implements
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-
-    private MainContract.Presenter mPresenter;
     private Fragment currentFragment = HomeFragment.newInstance();
 
 

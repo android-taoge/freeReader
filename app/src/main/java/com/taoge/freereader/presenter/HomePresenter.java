@@ -1,10 +1,10 @@
 package com.taoge.freereader.presenter;
 
-
+import com.google.gson.JsonObject;
 import com.taoge.freereader.base.BasePresenter;
-import com.taoge.freereader.bean.Girl;
-import com.taoge.freereader.contract.MainContract;
-import com.taoge.freereader.model.MainModel;
+import com.taoge.freereader.bean.BookCategory;
+import com.taoge.freereader.contract.HomeContract;
+import com.taoge.freereader.model.HomeModel;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -12,45 +12,44 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * created by：TangTao on 2018/10/27 16:36
+ * created by：TangTao on 2018/11/3 16:41
  * <p>
  * email：xxx@163.com
  */
-public class MainPresenter extends BasePresenter<MainContract.View>
-        implements MainContract.Presenter{
+public class HomePresenter extends BasePresenter<HomeContract.View>
+        implements HomeContract.Presenter {
 
+    private HomeModel mHomeModel;
 
-    private MainModel mainModel;
-
-    public MainPresenter() {
-        this.mainModel = new MainModel();
+    public HomePresenter() {
+        this.mHomeModel = new HomeModel();
     }
 
 
-    public void getGirlData(){
-        mainModel.getGirl()
+    /**
+     * 获取百度首页信息
+     */
+    public void getBookCategory() {
+        mHomeModel.getBookCategory()
                 .subscribeOn(Schedulers.io())
+                .map(bookCategory -> bookCategory)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Girl>() {
+                .subscribe(new Observer<BookCategory>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Girl girl) {
-                        if(mViewRef.get()!=null){
-                            mViewRef.get().showMessage(girl.toString());
-
+                    public void onNext(BookCategory category) {
+                        if (mViewRef.get() != null) {
+                            mViewRef.get().showHomeData(category.toString());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        if(mViewRef.get()!=null){
-                            mViewRef.get().showMsg(e.toString());
 
-                        }
                     }
 
                     @Override
@@ -58,5 +57,6 @@ public class MainPresenter extends BasePresenter<MainContract.View>
 
                     }
                 });
+
     }
 }

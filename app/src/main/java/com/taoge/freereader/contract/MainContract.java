@@ -1,10 +1,12 @@
 package com.taoge.freereader.contract;
 
 
-import com.taoge.freereader.base.BasePresenter;
-import com.taoge.freereader.base.IBaseModel;
-import com.taoge.freereader.base.IBasePresenter;
 import com.taoge.freereader.base.IBaseView;
+import com.taoge.freereader.bean.Girl;
+
+import java.util.HashMap;
+
+import io.reactivex.Observable;
 
 
 /**
@@ -31,5 +33,6 @@ public interface MainContract {
 
     interface Model{
 
+        Observable<Girl> getGirl();
     }
 }
