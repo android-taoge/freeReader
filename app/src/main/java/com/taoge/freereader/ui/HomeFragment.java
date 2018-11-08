@@ -3,18 +3,15 @@ package com.taoge.freereader.ui;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taoge.freereader.R;
-import com.taoge.freereader.base.BaseFragment;
 import com.taoge.freereader.base.MvpBaseFragment;
 import com.taoge.freereader.contract.HomeContract;
 import com.taoge.freereader.presenter.HomePresenter;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * created by：TangTao on 2018/10/27 17:47
@@ -29,8 +26,6 @@ public class HomeFragment extends MvpBaseFragment<HomePresenter> implements Home
     @BindView(R.id.tv_home)
     TextView textHome;
 
-    @BindView(R.id.btn_req)
-    Button btnReq;
 
 
 
@@ -90,8 +85,4 @@ public class HomeFragment extends MvpBaseFragment<HomePresenter> implements Home
 
 
 
-    @OnClick(R.id.btn_req)
-    public void reqBookCategory(){
-        mPresenter.getBookCategory();
-    }
 }

@@ -42,7 +42,7 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-        initData(savedInstanceState);
+
     }
 
     @Nullable
@@ -57,6 +57,7 @@ public abstract class BaseFragment extends Fragment {
         Log.d(TAG, "onViewCreated");
         unbinder=ButterKnife.bind(this, view);
         initView(view, savedInstanceState);
+        initData(savedInstanceState);
     }
 
     @Override

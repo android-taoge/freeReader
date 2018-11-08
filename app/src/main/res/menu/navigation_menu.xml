@@ -4,19 +4,19 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="首页" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/category"
         android:icon="@drawable/ic_bookshelf"
-        android:title="书架" />
+        android:title="@string/category" />
     <item
         android:id="@+id/notification"
         android:icon="@drawable/ic_top"
-        android:title="排行榜" />
+        android:title="@string/topRank" />
     <item
         android:id="@+id/personal"
         android:icon="@drawable/ic_personal"
-        android:title="我的" />
+        android:title="@string/mine" />
 
 </menu>

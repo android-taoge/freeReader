@@ -11,22 +11,22 @@ import com.taoge.freereader.base.BaseFragment;
  * <p>
  * email：xxx@163.com
  */
-public class TopFragment extends BaseFragment {
+public class RankFragment extends BaseFragment {
 
-    private static TopFragment topFragment = null;
+    private static RankFragment rankFragment = null;
 
-    public static TopFragment newInstance() {
+    public static RankFragment newInstance() {
 
-        if (topFragment == null) {
-            topFragment = new TopFragment();
+        if (rankFragment == null) {
+            rankFragment = new RankFragment();
         }
-        return topFragment;
+        return rankFragment;
     }
 
 
     @Override
     protected int getPageLayoutID() {
-        return R.layout.fragment_top;
+        return R.layout.fragment_rank;
     }
 
     @Override

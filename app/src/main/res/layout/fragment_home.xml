@@ -14,12 +14,5 @@
         android:text="我是home" />
 
 
-    <Button
-        android:id="@+id/btn_req"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="点击获取数据"
-        android:layout_alignParentBottom="true"
-        />
 
 </RelativeLayout>

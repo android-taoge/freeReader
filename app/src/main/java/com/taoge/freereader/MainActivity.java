@@ -10,14 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.taoge.freereader.base.BaseActivity;
 import com.taoge.freereader.base.BaseFragment;
 import com.taoge.freereader.base.MvpBaseActivity;
 import com.taoge.freereader.contract.MainContract;
 import com.taoge.freereader.presenter.MainPresenter;
 import com.taoge.freereader.ui.CategoryFragment;
 import com.taoge.freereader.ui.HomeFragment;
-import com.taoge.freereader.ui.TopFragment;
+import com.taoge.freereader.ui.RankFragment;
 import com.taoge.freereader.ui.PersonalFragment;
 import com.taoge.freereader.util.BottomNavigationViewHelper;
 
@@ -111,7 +110,7 @@ public class MainActivity extends MvpBaseActivity<MainPresenter> implements
                 return true;
 
             case R.id.notification:
-                targetFragment = TopFragment.newInstance();
+                targetFragment = RankFragment.newInstance();
                 switchFragment(targetFragment)
                         .commit();
                 return true;
