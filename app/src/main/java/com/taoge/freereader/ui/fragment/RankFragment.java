@@ -1,4 +1,4 @@
-package com.taoge.freereader.ui;
+package com.taoge.freereader.ui.fragment;
 
 import android.os.Bundle;
 import android.view.View;

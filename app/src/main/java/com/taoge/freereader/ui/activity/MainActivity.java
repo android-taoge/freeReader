@@ -1,4 +1,4 @@
-package com.taoge.freereader;
+package com.taoge.freereader.ui.activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,14 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.taoge.freereader.R;
 import com.taoge.freereader.base.BaseFragment;
 import com.taoge.freereader.base.MvpBaseActivity;
 import com.taoge.freereader.contract.MainContract;
 import com.taoge.freereader.presenter.MainPresenter;
-import com.taoge.freereader.ui.CategoryFragment;
-import com.taoge.freereader.ui.HomeFragment;
-import com.taoge.freereader.ui.RankFragment;
-import com.taoge.freereader.ui.PersonalFragment;
+import com.taoge.freereader.ui.fragment.CategoryFragment;
+import com.taoge.freereader.ui.fragment.HomeFragment;
+import com.taoge.freereader.ui.fragment.RankFragment;
+import com.taoge.freereader.ui.fragment.PersonalFragment;
 import com.taoge.freereader.util.BottomNavigationViewHelper;
 
 

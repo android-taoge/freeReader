@@ -1,4 +1,4 @@
-package com.taoge.freereader.ui;
+package com.taoge.freereader.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +15,7 @@ import com.taoge.freereader.common.OnRvItemClickListener;
 import com.taoge.freereader.common.SupportGridItemDecoration;
 import com.taoge.freereader.contract.CategoryContract;
 import com.taoge.freereader.presenter.CategoryPresenter;
+import com.taoge.freereader.ui.activity.SubCategoryActivity;
 
 import butterknife.BindView;
 
@@ -113,6 +114,7 @@ public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
         @Override
         public void onItemClick(View view, int position, BookCategory.MaleBean data) {
             Toast.makeText(getActivity(), "点我干啥？"+position, Toast.LENGTH_SHORT).show();
+            SubCategoryActivity.startActivity(getActivity());
         }
     }
 
@@ -123,6 +125,7 @@ public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
         @Override
         public void onItemClick(View view, int position, BookCategory.FemaleBean data) {
             Toast.makeText(getActivity(), "点我干啥？"+position, Toast.LENGTH_SHORT).show();
+            SubCategoryActivity.startActivity(getActivity());
         }
     }
 }

@@ -7,5 +7,16 @@
         <item name="colorPrimaryDark">@android:color/background_dark</item>
         <!--控件的选中颜色，即checked或selected状态的颜色。-->
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowAnimationStyle">@style/AnimActivity</item>
+    </style>
+
+    <style name="AnimActivity">
+
+        <item name="android:activityOpenEnterAnimation">@anim/translate_right_to_center</item>
+        <item name="android:activityOpenExitAnimation">@anim/translate_center_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/translate_left_to_center</item>
+        <item name="android:activityCloseExitAnimation">@anim/translate_center_to_right</item>
+
     </style>
 </resources>

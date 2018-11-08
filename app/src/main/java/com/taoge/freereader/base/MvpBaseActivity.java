@@ -20,7 +20,9 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter=createPresenter();
-        mPresenter.attachView(this);
+        if(mPresenter!=null){
+            mPresenter.attachView(this);
+        }
     }
 
 
@@ -30,6 +32,8 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.detachView();
+        if(mPresenter!=null){
+            mPresenter.detachView();
+        }
     }
 }
