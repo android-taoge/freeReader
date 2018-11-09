@@ -17,6 +17,7 @@ import com.taoge.freereader.adapter.SomeOneCategoryAdapter;
 import com.taoge.freereader.base.MvpBaseActivity;
 import com.taoge.freereader.contract.SomeoneCategoryBookListContract;
 import com.taoge.freereader.presenter.SomeoneCategoryPresenter;
+import com.taoge.freereader.util.LogUtil;
 
 
 import butterknife.BindView;
@@ -41,7 +42,7 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
 
     private int start = 0;
-    private int limit = 20;
+    private int limit = 10;
 
 
     @Override
@@ -66,7 +67,7 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     @Override
     public void initData() {
         if (categoryName != null && gender != null) {
-            mPresenter.getBooksByCategory(gender, "hot", categoryName, 0, limit);
+            mPresenter.getBooksByCategory(mBooksRcv,gender, "hot", categoryName, 0, limit);
         }
     }
 
@@ -122,35 +123,46 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     @Override
     public void showBookList(SomeOneCategoryAdapter adapter, int backSize) {
 
-        start = start + backSize;
         mBooksRcv.setLayoutManager(new LinearLayoutManager(this));
         mBooksRcv.setAdapter(adapter);
-        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+      /*  adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
                 mBooksRcv.postDelayed(new Runnable() {
                     @Override
                     public void run() {
 
-                    }/*if (limit >= backSize) {
+                        if (limit >= backSize) {
                             //数据全部加载完毕
                             adapter.loadMoreEnd();
                         } else {
-                            if (isErr) {
-                                //成功获取更多数据
-                                adapter.addData(mPresenter.getBooksByCategory(gender, "hot", categoryName, 0, 20));
-                                adapter.loadMoreComplete();
-                            } else {
-                                //获取更多数据失败
-                                isErr = true;
-                                Toast.makeText(SomeoneCategoryActivity.this, "获取失败", Toast.LENGTH_LONG).show();
-                                adapter.loadMoreFail();
 
-                            }
-                        }*/
+                            //成功获取更多数据
+                            mPresenter.getBooksByCategory(gender, "hot", categoryName, start, limit);
+                            adapter.loadMoreComplete();
+
+
+                        }
+
+                    }
                 }, 1500);
             }
-        }, mBooksRcv);
+        }, mBooksRcv);*/
+    }
+
+    @Override
+    public void loadMoreComplete(SomeOneCategoryAdapter adapter) {
+        adapter.loadMoreComplete();
+    }
+
+    @Override
+    public void loadMoreEnd(SomeOneCategoryAdapter adapter) {
+        adapter.loadMoreEnd();
+    }
+
+    @Override
+    public void loadMoreFail(SomeOneCategoryAdapter adapter) {
+        adapter.loadMoreFail();
     }
 
    /* @Override
