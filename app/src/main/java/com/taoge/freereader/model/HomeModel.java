@@ -1,7 +1,6 @@
 package com.taoge.freereader.model;
 
-import com.google.gson.JsonObject;
-import com.taoge.freereader.bean.BookCategory;
+import com.taoge.freereader.bean.TopBookCategory;
 import com.taoge.freereader.contract.HomeContract;
 import com.taoge.freereader.net.ApiService;
 import com.taoge.freereader.net.RetrofitServiceManager;
@@ -17,7 +16,7 @@ public class HomeModel implements HomeContract.Model {
 
 
     @Override
-    public Observable<BookCategory> getBookCategory() {
+    public Observable<TopBookCategory> getBookCategory() {
         return RetrofitServiceManager
                 .getInstance()
                 .create(ApiService.class)

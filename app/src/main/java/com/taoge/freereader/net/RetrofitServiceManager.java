@@ -1,5 +1,7 @@
 package com.taoge.freereader.net;
 
+import com.taoge.freereader.constant.Constant;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -38,7 +40,7 @@ public class RetrofitServiceManager {
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(ApiConfig.BASE_URL)
+                .baseUrl(Constant.API_BASE_URL)
                 .build();
     }
 

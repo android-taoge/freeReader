@@ -7,7 +7,7 @@ import java.util.List;
  * <p>
  * email：xxx@163.com
  */
-public class BookCategory {
+public class TopBookCategory {
 
 
     /**
@@ -335,7 +335,7 @@ public class BookCategory {
 
     @Override
     public String toString() {
-        return "BookCategory{" +
+        return "TopBookCategory{" +
                 "ok=" + ok +
                 ", male=" + male +
                 ", female=" + female +

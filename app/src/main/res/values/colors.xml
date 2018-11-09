@@ -7,5 +7,7 @@
     <color name="bottom_bar">#F0FFF0</color>
     <color name="tab_checked">#ED6A2C</color>
     <color name="tab_unchecked">#757575</color>
+    <color name="color_text_title">#212121</color>
+    <color name="color_text_gray">#828282</color>
 
 </resources>

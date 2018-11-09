@@ -10,12 +10,12 @@ import com.taoge.freereader.R;
 import com.taoge.freereader.adapter.FemaleCategoryAdapter;
 import com.taoge.freereader.adapter.MaleCategoryAdapter;
 import com.taoge.freereader.base.MvpBaseFragment;
-import com.taoge.freereader.bean.BookCategory;
+import com.taoge.freereader.bean.TopBookCategory;
 import com.taoge.freereader.common.OnRvItemClickListener;
 import com.taoge.freereader.common.SupportGridItemDecoration;
-import com.taoge.freereader.contract.CategoryContract;
+import com.taoge.freereader.contract.TopCategoryContract;
 import com.taoge.freereader.presenter.CategoryPresenter;
-import com.taoge.freereader.ui.activity.SubCategoryActivity;
+import com.taoge.freereader.ui.activity.SomeoneCategoryActivity;
 
 import butterknife.BindView;
 
@@ -25,7 +25,7 @@ import butterknife.BindView;
  * email：xxx@163.com
  */
 public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
-        implements CategoryContract.View {
+        implements TopCategoryContract.View {
 
     private static CategoryFragment categoryFragment = null;
 
@@ -37,7 +37,6 @@ public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
 
     private MaleCategoryAdapter maleAdapter;
     private FemaleCategoryAdapter femaleAdapter;
-
 
 
     public static CategoryFragment newInstance() {
@@ -96,36 +95,38 @@ public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
     }
 
     @Override
-    public void showCategory(BookCategory category) {
+    public void showCategory(TopBookCategory category) {
 
-        maleAdapter=new MaleCategoryAdapter(getActivity(), category.getMale(), new MaleItemClickListener());
-        femaleAdapter=new FemaleCategoryAdapter(getActivity(),category.getFemale(),new FemaleItemClickListener());
+        maleAdapter = new MaleCategoryAdapter(getActivity(), category.getMale(), new MaleItemClickListener());
+        femaleAdapter = new FemaleCategoryAdapter(getActivity(), category.getFemale(), new FemaleItemClickListener());
 
         maleRecv.setAdapter(maleAdapter);
         femaleRecv.setAdapter(femaleAdapter);
     }
 
 
-
-
-    class MaleItemClickListener implements OnRvItemClickListener<BookCategory.MaleBean>{
+    class MaleItemClickListener implements OnRvItemClickListener<TopBookCategory.MaleBean> {
 
 
         @Override
-        public void onItemClick(View view, int position, BookCategory.MaleBean data) {
-            Toast.makeText(getActivity(), "点我干啥？"+position, Toast.LENGTH_SHORT).show();
-            SubCategoryActivity.startActivity(getActivity());
+        public void onItemClick(View view, int position, TopBookCategory.MaleBean data) {
+            Toast.makeText(getActivity(), "点我干啥？" + position, Toast.LENGTH_SHORT).show();
+            String categoryName = data.getName();
+            String gender="male";
+            SomeoneCategoryActivity.startActivity(getActivity(),categoryName,gender);
         }
     }
 
 
-    class FemaleItemClickListener implements OnRvItemClickListener<BookCategory.FemaleBean>{
+    class FemaleItemClickListener implements OnRvItemClickListener<TopBookCategory.FemaleBean> {
 
 
         @Override
-        public void onItemClick(View view, int position, BookCategory.FemaleBean data) {
-            Toast.makeText(getActivity(), "点我干啥？"+position, Toast.LENGTH_SHORT).show();
-            SubCategoryActivity.startActivity(getActivity());
+        public void onItemClick(View view, int position, TopBookCategory.FemaleBean data) {
+            Toast.makeText(getActivity(), "点我干啥？" + position, Toast.LENGTH_SHORT).show();
+            String categoryName = data.getName();
+            String gender="female";
+            SomeoneCategoryActivity.startActivity(getActivity(),categoryName,gender);
         }
     }
 }

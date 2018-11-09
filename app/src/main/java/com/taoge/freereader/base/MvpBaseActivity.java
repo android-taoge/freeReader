@@ -22,9 +22,23 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
         mPresenter=createPresenter();
         if(mPresenter!=null){
             mPresenter.attachView(this);
+
+            initData();
+            initListener();
         }
+
     }
 
+    /**
+     * 设置数据
+     */
+    public abstract void initData();
+
+
+    /**
+     * 设置监听
+     */
+    public abstract void initListener();
 
 
     protected abstract P createPresenter();

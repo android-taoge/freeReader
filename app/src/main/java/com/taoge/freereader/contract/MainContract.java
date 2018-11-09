@@ -33,6 +33,6 @@ public interface MainContract {
 
     interface Model{
 
-        Observable<Girl> getGirl();
+
     }
 }

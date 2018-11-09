@@ -1,7 +1,7 @@
 package com.taoge.freereader.model;
 
-import com.taoge.freereader.bean.BookCategory;
-import com.taoge.freereader.contract.CategoryContract;
+import com.taoge.freereader.bean.TopBookCategory;
+import com.taoge.freereader.contract.TopCategoryContract;
 import com.taoge.freereader.net.ApiService;
 import com.taoge.freereader.net.RetrofitServiceManager;
 
@@ -12,10 +12,10 @@ import io.reactivex.Observable;
  * <p>
  * email：xxx@163.com
  */
-public class CategoryModel implements CategoryContract.Model {
+public class TopCategoryModel implements TopCategoryContract.Model {
 
     @Override
-    public Observable<BookCategory> getBookCategory() {
+    public Observable<TopBookCategory> getBookCategory() {
         return RetrofitServiceManager
                 .getInstance()
                 .create(ApiService.class)

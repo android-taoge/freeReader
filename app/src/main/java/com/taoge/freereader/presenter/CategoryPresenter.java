@@ -1,9 +1,9 @@
 package com.taoge.freereader.presenter;
 
 import com.taoge.freereader.base.BasePresenter;
-import com.taoge.freereader.bean.BookCategory;
-import com.taoge.freereader.contract.CategoryContract;
-import com.taoge.freereader.model.CategoryModel;
+import com.taoge.freereader.bean.TopBookCategory;
+import com.taoge.freereader.contract.TopCategoryContract;
+import com.taoge.freereader.model.TopCategoryModel;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -15,13 +15,13 @@ import io.reactivex.schedulers.Schedulers;
  * <p>
  * email：xxx@163.com
  */
-public class CategoryPresenter extends BasePresenter<CategoryContract.View>
-        implements CategoryContract.Presenter{
+public class CategoryPresenter extends BasePresenter<TopCategoryContract.View>
+        implements TopCategoryContract.Presenter{
 
-    private CategoryModel mModel;
+    private TopCategoryModel mModel;
 
     public CategoryPresenter() {
-        this.mModel = new CategoryModel();
+        this.mModel = new TopCategoryModel();
     }
 
 
@@ -32,16 +32,16 @@ public class CategoryPresenter extends BasePresenter<CategoryContract.View>
         mModel.getBookCategory()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BookCategory>() {
+                .subscribe(new Observer<TopBookCategory>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(BookCategory bookCategory) {
+                    public void onNext(TopBookCategory topBookCategory) {
                         if(mViewRef.get()!=null){
-                            mViewRef.get().showCategory(bookCategory);
+                            mViewRef.get().showCategory(topBookCategory);
                         }
                     }
 

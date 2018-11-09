@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taoge.freereader.R;
@@ -34,6 +35,9 @@ public class MainActivity extends MvpBaseActivity<MainPresenter> implements
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R.id.toolbar_title)
+    TextView tvTitle;
+
     private Fragment currentFragment = HomeFragment.newInstance();
 
 
@@ -46,6 +50,7 @@ public class MainActivity extends MvpBaseActivity<MainPresenter> implements
     public void initView() {
         BottomNavigationViewHelper.disableShiftMode(navigationView);
         mToolbar.setTitle("");
+        tvTitle.setText(R.string.app_name);
         setSupportActionBar(mToolbar);
 
 

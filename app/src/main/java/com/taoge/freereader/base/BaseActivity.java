@@ -23,10 +23,16 @@ public abstract class BaseActivity extends AppCompatActivity{
         setContentView(initLayout());
         mUnbind= ButterKnife.bind(this);
         initView();
-        initData();
-        initListener();
+
+
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 
     /**
      * 获取布局layout
@@ -34,23 +40,16 @@ public abstract class BaseActivity extends AppCompatActivity{
      */
     protected abstract int initLayout();
 
-
     /**
      * 获取控件
      */
     public abstract void initView();
 
 
-    /**
-     * 设置数据
-     */
-    public abstract void initData();
 
 
-    /**
-     * 设置监听
-     */
-    public abstract void initListener();
+
+
 
 
     @Override

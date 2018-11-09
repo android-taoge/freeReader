@@ -2,7 +2,7 @@ package com.taoge.freereader.contract;
 
 import com.taoge.freereader.base.IBaseModel;
 import com.taoge.freereader.base.IBaseView;
-import com.taoge.freereader.bean.BookCategory;
+import com.taoge.freereader.bean.TopBookCategory;
 
 import io.reactivex.Observable;
 
@@ -11,11 +11,11 @@ import io.reactivex.Observable;
  * <p>
  * email：xxx@163.com
  */
-public interface CategoryContract {
+public interface TopCategoryContract {
 
     interface View extends IBaseView{
 
-        void showCategory(BookCategory category);
+        void showCategory(TopBookCategory category);
     }
 
 
@@ -25,6 +25,6 @@ public interface CategoryContract {
 
     interface Model extends IBaseModel{
 
-        Observable<BookCategory> getBookCategory();
+        Observable<TopBookCategory> getBookCategory();
     }
 }
