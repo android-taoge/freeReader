@@ -27,7 +27,6 @@ public class SomeoneCategoryPresenter
     private SomeoneCategoryModel mModel;
 
 
-
     public SomeoneCategoryPresenter() {
         this.mModel = new SomeoneCategoryModel();
     }
@@ -42,7 +41,7 @@ public class SomeoneCategoryPresenter
      * @param start
      * @param limit
      */
-    public void getBooksByCategory( String gender, String type, String major, int start, int limit) {
+    public void getBooksByCategory(String gender, String type, String major, int start, int limit) {
         mModel.getSubCategoryList(
                 gender,
                 type,
@@ -65,9 +64,10 @@ public class SomeoneCategoryPresenter
 
                     @Override
                     public void onNext(List<SomeoneCategoryBookList.BooksBean> booksBeans) {
+                        //LogUtil.e("books.type", "==" + type);
+                        //LogUtil.e("books.size", "==" + booksBeans.size());
+                        if (mViewRef.get() != null) {
 
-                        LogUtil.e("books.size","=="+booksBeans.size());
-                        if(mViewRef.get()!=null){
                             mViewRef.get().showBookList(booksBeans);
                         }
                     }
@@ -84,7 +84,6 @@ public class SomeoneCategoryPresenter
                 });
 
     }
-
 
 
 }

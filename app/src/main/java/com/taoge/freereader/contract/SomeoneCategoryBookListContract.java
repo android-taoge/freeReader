@@ -19,6 +19,7 @@ public interface SomeoneCategoryBookListContract {
 
         void showBookList(List<SomeoneCategoryBookList.BooksBean> booksBeanList);
 
+
     }
 
 

@@ -11,9 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -21,9 +19,9 @@ import com.taoge.freereader.R;
 import com.taoge.freereader.adapter.SomeOneCategoryAdapter;
 import com.taoge.freereader.base.MvpBaseActivity;
 import com.taoge.freereader.bean.SomeoneCategoryBookList;
+import com.taoge.freereader.constant.Constant;
 import com.taoge.freereader.contract.SomeoneCategoryBookListContract;
 import com.taoge.freereader.presenter.SomeoneCategoryPresenter;
-import com.taoge.freereader.util.LogUtil;
 
 
 import java.util.ArrayList;
@@ -54,12 +52,14 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
     private boolean isRefresh = true;
 
+
     private List<SomeoneCategoryBookList.BooksBean> booksBeanList = new ArrayList<>();
     private SomeOneCategoryAdapter adapter;
     private int start = 0;
     private int limit = 10;
     private boolean sIsScrolling;
     private Menu mMenu;
+    private String mType;
 
 
     @Override
@@ -80,15 +80,16 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
         setSupportActionBar(mToolbar);
         mBooksRcv.setLayoutManager(new LinearLayoutManager(this));
         mBooksRcv.addOnScrollListener(new OnScrollListener());
+        swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setRefreshing(true);
     }
-
-
 
 
     @Override
     public void initData() {
 
+        //初始type
+        mType = Constant.Type.HOT;
         adapter = new SomeOneCategoryAdapter(R.layout.item_sub_category_list, booksBeanList);
         mBooksRcv.setAdapter(adapter);
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -99,14 +100,16 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
                     @Override
                     public void run() {
                         isRefresh = false;
-                        mPresenter.getBooksByCategory(gender, "hot", categoryName, start, limit);
+                        mPresenter.getBooksByCategory(gender, mType, categoryName, start, limit);
                     }
                 }, 2000);
             }
         }, mBooksRcv);
 
         if (categoryName != null && gender != null) {
-            mPresenter.getBooksByCategory(gender, "hot", categoryName, 0, limit);
+
+            swipeRefreshLayout.setRefreshing(true);
+            onRefresh();
         }
     }
 
@@ -143,9 +146,8 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        mMenu=menu;
-
-        getMenuInflater().inflate(R.menu.type_menu,menu);
+        mMenu = menu;
+        getMenuInflater().inflate(R.menu.type_menu, menu);
         return true;
 
     }
@@ -156,26 +158,42 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
             case android.R.id.home:
                 onBackPressed();
                 break;
+
             case R.id.id_hot:
                 resetMenu();
                 item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                mType = Constant.Type.HOT;
+                isRefresh=true;
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
                 break;
 
             case R.id.id_new:
                 resetMenu();
                 item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                mType = Constant.Type.NEW;
+                isRefresh=true;
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
                 break;
 
             case R.id.id_reputation:
                 resetMenu();
                 item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                mType = Constant.Type.REPUTATION;
+                isRefresh=true;
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
                 break;
 
             case R.id.id_over:
                 resetMenu();
                 item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                mType = Constant.Type.OVER;
+                isRefresh=true;
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
                 break;
-
 
 
         }
@@ -184,8 +202,11 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     }
 
 
-    private void resetMenu(){
-        for(int i=0;i<mMenu.size();i++){
+    /**
+     * 每次点击折叠菜单选择的时候，重置菜单
+     */
+    private void resetMenu() {
+        for (int i = 0; i < mMenu.size(); i++) {
             mMenu.getItem(i).setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
         }
     }
@@ -199,12 +220,9 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     }
 
 
-
     @Override
     public void showBookList(List<SomeoneCategoryBookList.BooksBean> booksBeanList) {
 
-
-        adapter.addData(booksBeanList);
 
         if (isRefresh) {
             adapter.removeAllFooterView();
@@ -226,10 +244,16 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
     }
 
+
     @Override
     public void onRefresh() {
         start = 0;
-        mPresenter.getBooksByCategory(gender, "hot", categoryName, 0, limit);
+        swipeRefreshLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getBooksByCategory(gender, mType, categoryName, 0, limit);
+            }
+        },1500);
     }
 
 
@@ -259,7 +283,6 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
         }
     }
-
 
 
 

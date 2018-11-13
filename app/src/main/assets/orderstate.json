@@ -1,0 +1,136 @@
+{
+  "order": [
+    {
+      "id": 893,
+      "member_id": 72,
+      "sn": "wzq20181110133417720000",
+      "total_amount": "29.80",
+      "status": "0",
+      "sub_order": [
+        {
+          "sub_sn": "wzq201811101334177251",
+          "sub_total_price": 29.8,
+          "user_id": 51,
+          "sell_name": "自营",
+          "goods": [
+            {
+              "sub_order_id": 777,
+              "goods_id": 110,
+              "goods_name": "蜂蜜柚子茶",
+              "thumb": "/Forestproducts/public/uploads/20180604/1f74e05e56f2b27b825f7965ee17267d.jpg",
+              "sell_price": "29.80",
+              "num": 1,
+              "status": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 892,
+      "member_id": 72,
+      "sn": "wzq20181110133403720000",
+      "total_amount": "29.80",
+      "status": "0",
+      "sub_order": [
+        {
+          "sub_sn": "wzq201811101334037251",
+          "sub_total_price": 29.8,
+          "user_id": 51,
+          "sell_name": "自营",
+          "goods": [
+            {
+              "sub_order_id": 776,
+              "goods_id": 110,
+              "goods_name": "蜂蜜柚子茶",
+              "thumb": "/Forestproducts/public/uploads/20180604/1f74e05e56f2b27b825f7965ee17267d.jpg",
+              "sell_price": "29.80",
+              "num": 1,
+              "status": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 889,
+      "member_id": 72,
+      "sn": "wzq20181108112001720000",
+      "total_amount": "0.01",
+      "status": "0",
+      "sub_order": [
+        {
+          "sub_sn": "wzq201811081120017251",
+          "sub_total_price": 0.01,
+          "user_id": 51,
+          "sell_name": "自营",
+          "goods": [
+            {
+              "sub_order_id": 772,
+              "goods_id": 136,
+              "goods_name": "test",
+              "thumb": "/Forestproducts/public/uploads/20180615/5f4b424f043c3d62815bde3a7cb0011c.jpg",
+              "sell_price": "0.01",
+              "num": 1,
+              "status": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 888,
+      "member_id": 72,
+      "sn": "wzq20181108111654720000",
+      "total_amount": "0.01",
+      "status": "0",
+      "sub_order": [
+        {
+          "sub_sn": "wzq201811081116547251",
+          "sub_total_price": 0.01,
+          "user_id": 51,
+          "sell_name": "自营",
+          "goods": [
+            {
+              "sub_order_id": 771,
+              "goods_id": 136,
+              "goods_name": "test",
+              "thumb": "/Forestproducts/public/uploads/20180615/5f4b424f043c3d62815bde3a7cb0011c.jpg",
+              "sell_price": "0.01",
+              "num": 1,
+              "status": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 887,
+      "member_id": 72,
+      "sn": "wzq20181108111455720000",
+      "total_amount": "0.01",
+      "status": "1",
+      "sub_order": [
+        {
+          "sub_sn": "wzq201811081114557251",
+          "sub_total_price": 0.01,
+          "user_id": 51,
+          "sell_name": "自营",
+          "goods": [
+            {
+              "sub_order_id": 770,
+              "goods_id": 136,
+              "goods_name": "test",
+              "thumb": "/Forestproducts/public/uploads/20180615/5f4b424f043c3d62815bde3a7cb0011c.jpg",
+              "sell_price": "0.01",
+              "num": 1,
+              "status": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "code": "200",
+  "msg": "查询成功"
+}
