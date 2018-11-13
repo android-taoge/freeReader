@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
     private int start = 0;
     private int limit = 10;
     private boolean sIsScrolling;
+    private Menu mMenu;
 
 
     @Override
@@ -80,6 +82,9 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
         mBooksRcv.addOnScrollListener(new OnScrollListener());
         swipeRefreshLayout.setRefreshing(true);
     }
+
+
+
 
     @Override
     public void initData() {
@@ -135,6 +140,15 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        mMenu=menu;
+
+        getMenuInflater().inflate(R.menu.type_menu,menu);
+        return true;
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -142,10 +156,40 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.id_hot:
+                resetMenu();
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                break;
+
+            case R.id.id_new:
+                resetMenu();
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                break;
+
+            case R.id.id_reputation:
+                resetMenu();
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                break;
+
+            case R.id.id_over:
+                resetMenu();
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                break;
+
+
+
         }
 
         return true;
     }
+
+
+    private void resetMenu(){
+        for(int i=0;i<mMenu.size();i++){
+            mMenu.getItem(i).setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        }
+    }
+
 
     public static void startActivity(Context context, String categoryName, String gender) {
         Intent intent = new Intent(context, SomeoneCategoryActivity.class);
@@ -154,21 +198,6 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
         context.startActivity(intent);
     }
 
-
-    @Override
-    public void loadMoreComplete(SomeOneCategoryAdapter adapter) {
-        adapter.loadMoreComplete();
-    }
-
-    @Override
-    public void loadMoreEnd(SomeOneCategoryAdapter adapter) {
-        adapter.loadMoreEnd();
-    }
-
-    @Override
-    public void loadMoreFail(SomeOneCategoryAdapter adapter) {
-        adapter.loadMoreFail();
-    }
 
 
     @Override
@@ -230,4 +259,9 @@ public class SomeoneCategoryActivity extends MvpBaseActivity<SomeoneCategoryPres
 
         }
     }
+
+
+
+
+
 }

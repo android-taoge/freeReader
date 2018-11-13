@@ -6,4 +6,5 @@
     <string name="category">分类</string>
     <string name="topRank">排行榜</string>
     <string name="mine">我的</string>
+    <string name="search">搜索</string>
 </resources>

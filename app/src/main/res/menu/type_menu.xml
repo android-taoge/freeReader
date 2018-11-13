@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/id_hot"
+        android:title="热门"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/id_new"
+        android:title="新书"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/id_reputation"
+        android:title="好评"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/id_over"
+        android:title="完结"
+        app:showAsAction="never" />
+
+</menu>

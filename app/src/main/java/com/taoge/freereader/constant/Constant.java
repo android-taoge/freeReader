@@ -35,17 +35,17 @@ public class Constant {
 
 
     @StringDef({
-            Category.HOT,
-            Category.NEW,
-            Category.REPUTATION,
-            Category.OVER
+            Type.HOT,
+            Type.NEW,
+            Type.REPUTATION,
+            Type.OVER
     })
 
     /**
      * 分类类型
      */
     @Retention(RetentionPolicy.SOURCE)
-    public @interface Category {
+    public @interface Type {
         String HOT = "hot";
         String NEW = "new";
         String REPUTATION = "reputation";
