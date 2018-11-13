@@ -25,7 +25,7 @@ import butterknife.BindView;
  * email：xxx@163.com
  */
 public class CategoryFragment extends MvpBaseFragment<CategoryPresenter>
-        implements TopCategoryContract.View {
+        implements TopCategoryContract.View{
 
     private static CategoryFragment categoryFragment = null;
 

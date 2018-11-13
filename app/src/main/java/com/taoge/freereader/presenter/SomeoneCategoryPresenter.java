@@ -1,9 +1,5 @@
 package com.taoge.freereader.presenter;
 
-import android.support.v7.widget.RecyclerView;
-
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.taoge.freereader.R;
 import com.taoge.freereader.adapter.SomeOneCategoryAdapter;
 import com.taoge.freereader.base.BasePresenter;
 import com.taoge.freereader.bean.SomeoneCategoryBookList;
@@ -11,12 +7,9 @@ import com.taoge.freereader.contract.SomeoneCategoryBookListContract;
 import com.taoge.freereader.model.SomeoneCategoryModel;
 import com.taoge.freereader.util.LogUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
@@ -33,14 +26,7 @@ public class SomeoneCategoryPresenter
 
     private SomeoneCategoryModel mModel;
 
-    private SomeOneCategoryAdapter adapter;
 
-    private int start = 0;
-    private int limit = 10;
-    private String gender;
-    private String categoryName;
-    private String type;
-    private RecyclerView recyclerView;
 
     public SomeoneCategoryPresenter() {
         this.mModel = new SomeoneCategoryModel();
@@ -56,11 +42,7 @@ public class SomeoneCategoryPresenter
      * @param start
      * @param limit
      */
-    public void getBooksByCategory(RecyclerView recyclerView, String gender, String type, String major, int start, int limit) {
-        this.recyclerView=recyclerView;
-        this.gender = gender;
-        this.type=type;
-        this.categoryName = major;
+    public void getBooksByCategory( String gender, String type, String major, int start, int limit) {
         mModel.getSubCategoryList(
                 gender,
                 type,
@@ -83,11 +65,10 @@ public class SomeoneCategoryPresenter
 
                     @Override
                     public void onNext(List<SomeoneCategoryBookList.BooksBean> booksBeans) {
-                        //int bookSize=booksBeans.size();
-                        if (booksBeans.size() != 0) {
-                            //LogUtil.e("bookSize","=="+bookSize);
-                            setAdapterData(booksBeans);
 
+                        LogUtil.e("books.size","=="+booksBeans.size());
+                        if(mViewRef.get()!=null){
+                            mViewRef.get().showBookList(booksBeans);
                         }
                     }
 
@@ -105,37 +86,5 @@ public class SomeoneCategoryPresenter
     }
 
 
-    private void setAdapterData(List<SomeoneCategoryBookList.BooksBean> booksBeans) {
-        int bookSize = booksBeans.size();
-        start = start + bookSize;
-        LogUtil.e("backSize", "==" + bookSize);
-        LogUtil.e("start", "==" + start);
-        if (mViewRef.get() != null) {
-            if (adapter == null) {
-                adapter = new SomeOneCategoryAdapter(R.layout.item_sub_category_list, booksBeans);
-                mViewRef.get().showBookList(adapter, bookSize);
-            } else {
-                adapter.addData(booksBeans);
-                LogUtil.e("adapter.dataSize", "==" + adapter.getData().size());
-            }
 
-            adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-                @Override
-                public void onLoadMoreRequested() {
-                    recyclerView.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            if (limit >= bookSize) {
-                               mViewRef.get().loadMoreEnd(adapter);
-                            } else {
-                                getBooksByCategory(recyclerView,gender, type, categoryName, start, limit);
-                                mViewRef.get().loadMoreComplete(adapter);
-                            }
-                        }
-                    },1000);
-                }
-            },recyclerView);
-        }
-    }
 }

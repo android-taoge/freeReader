@@ -124,8 +124,8 @@ public class CommonRVHolder extends RecyclerView.ViewHolder
         ImageView view = getView(viewId);
 
         RequestOptions options = new RequestOptions()
-                .placeholder(R.drawable.ic_home)
-                .error(R.drawable.ic_search);
+                .placeholder(R.drawable.cover_default)
+                .error(R.drawable.cover_default);
 
         Glide.with(mContext)
                 .load(imgUrl)

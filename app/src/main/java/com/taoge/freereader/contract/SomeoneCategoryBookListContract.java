@@ -18,7 +18,9 @@ import retrofit2.http.Query;
 public interface SomeoneCategoryBookListContract {
 
     interface View extends IBaseView{
-        void showBookList(SomeOneCategoryAdapter adapter,int backSize);
+        //void showBookList(SomeOneCategoryAdapter adapter,int backSize);
+
+        void showBookList(List<SomeoneCategoryBookList.BooksBean> booksBeanList);
 
         void loadMoreComplete(SomeOneCategoryAdapter adapter);
 
