@@ -1,11 +1,9 @@
 package com.taoge.freereader.presenter;
 
-import com.taoge.freereader.adapter.SomeOneCategoryAdapter;
 import com.taoge.freereader.base.BasePresenter;
 import com.taoge.freereader.bean.SomeoneCategoryBookList;
 import com.taoge.freereader.contract.SomeoneCategoryBookListContract;
 import com.taoge.freereader.model.SomeoneCategoryModel;
-import com.taoge.freereader.util.LogUtil;
 
 import java.util.List;
 
