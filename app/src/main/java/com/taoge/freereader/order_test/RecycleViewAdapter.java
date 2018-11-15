@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.taoge.freereader.R;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Created by YQ on 2016/11/25.
  */
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecycleViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private static final String TAG = "RecycleViewAdapter_log";
     private List<Order.MsgBean> dataList = new ArrayList<>();
     private final int HEAD = 0x001;
@@ -31,21 +32,21 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case HEAD:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_head, parent, false));
+                return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_head, parent, false));
             case ITEM:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false));
+                return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false));
             case FOOT:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false));
+                return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false));
             default:
                 return null;
         }
     }
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ViewHolder viewHolder = (ViewHolder) holder;
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
+        BaseViewHolder viewHolder = (BaseViewHolder) holder;
         if (getItemViewType(position) == HEAD) {
             ((TextView) viewHolder.getView(R.id.item_headTv)).setText("订单号:" + dataList.get(position).getSn());
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
