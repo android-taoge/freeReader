@@ -40,7 +40,7 @@ public class CategoryPresenter extends BasePresenter<TopCategoryContract.View>
 
                     @Override
                     public void onNext(TopBookCategory topBookCategory) {
-                        if(mViewRef.get()!=null){
+                        if(isViewAttached()){
                             mViewRef.get().showCategory(topBookCategory);
                         }
                     }

@@ -1,6 +1,5 @@
 package com.taoge.freereader.base;
 
-import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 /**
@@ -11,10 +10,12 @@ import java.lang.ref.WeakReference;
 public abstract class BasePresenter<V extends IBaseView> {
 
 
-    protected Reference<V> mViewRef;//View 接口类型的弱引用
+    protected WeakReference<V> mViewRef;//View 接口类型的弱引用
 
     public void attachView(V view) {
-        mViewRef = new WeakReference<V>(view);
+        if(mViewRef==null){
+            mViewRef = new WeakReference<V>(view);
+        }
     }
 
     protected V getView() {

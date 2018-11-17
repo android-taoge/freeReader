@@ -64,7 +64,7 @@ public class SomeoneCategoryPresenter
                     public void onNext(List<SomeoneCategoryBookList.BooksBean> booksBeans) {
                         //LogUtil.e("books.type", "==" + type);
                         //LogUtil.e("books.size", "==" + booksBeans.size());
-                        if (mViewRef.get() != null) {
+                        if (isViewAttached()) {
 
                             mViewRef.get().showBookList(booksBeans);
                         }
