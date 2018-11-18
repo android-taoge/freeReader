@@ -10,13 +10,18 @@
 
         <item name="android:windowAnimationStyle">@style/AnimActivity</item>
 
+
     </style>
 
-    <style name="AnimActivity" parent="@android:style/Animation">
+    <style name="AnimActivity" parent="android:Animation.Activity">
 
+        <!--新Activity进入-->
         <item name="android:activityOpenEnterAnimation">@anim/translate_right_to_center</item>
+        <!--旧Activity退出-->
         <item name="android:activityOpenExitAnimation">@anim/translate_center_to_left</item>
+        <!--旧Activity进入-->
         <item name="android:activityCloseEnterAnimation">@anim/translate_left_to_center</item>
+        <!--新Activity退出-->
         <item name="android:activityCloseExitAnimation">@anim/translate_center_to_right</item>
 
     </style>

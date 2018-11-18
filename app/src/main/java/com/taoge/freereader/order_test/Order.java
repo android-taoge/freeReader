@@ -113,6 +113,9 @@ public class Order {
          * createDate : 1472123141000
          */
 
+        public  static final int TITLE=1;
+        public static final int CONTENT=2;
+        public static final int BOTTOM=3;
 
         private int type;
         private int amount;

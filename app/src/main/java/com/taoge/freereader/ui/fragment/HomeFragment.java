@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.taoge.freereader.R;
 import com.taoge.freereader.base.MvpBaseFragment;
 import com.taoge.freereader.contract.HomeContract;
+import com.taoge.freereader.hongyang.LoadMoreWrapper;
 import com.taoge.freereader.order_test.Order;
 import com.taoge.freereader.order_test.RecycleViewAdapter;
 import com.taoge.freereader.presenter.HomePresenter;
@@ -39,6 +40,8 @@ public class HomeFragment extends MvpBaseFragment<HomePresenter> implements Home
     private Order.MsgBean bean;
     private List<Order.MsgBean> msgBeanList=new ArrayList<>();
     private RecycleViewAdapter adapter;
+
+    private LoadMoreWrapper loadMoreWrapper;
 
 
     public static HomeFragment newInstance(){
@@ -107,7 +110,35 @@ public class HomeFragment extends MvpBaseFragment<HomePresenter> implements Home
         msgBeanList= handleList(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter=new RecycleViewAdapter(msgBeanList,getActivity());
-        recyclerView.setAdapter(adapter);
+        loadMoreWrapper=new LoadMoreWrapper(adapter);
+        loadMoreWrapper.setLoadMoreView(R.layout.brvah_quick_view_load_more);
+        recyclerView.setAdapter(loadMoreWrapper);
+        loadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+
+                recyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       /* Order.MsgBean msgBean=new Order.MsgBean();
+                        msgBean.setType(1);
+                        msgBean.setSn("tttttttttttttt");
+                        List<Order.MsgBean.OrderItemBean> orderItemBeans=new ArrayList<>();
+                        Order.MsgBean.OrderItemBean orderItemBean=new Order.MsgBean.OrderItemBean();
+                        orderItemBean.setName("充气娃娃");
+                        orderItemBean.setPrice(199);
+                        msgBean.setOrderItem(orderItemBeans);
+                        List<Order.MsgBean> oneMsgBeans=new ArrayList<>();
+                        oneMsgBeans.add(msgBean);
+                        List<Order.MsgBean> newMsgBeanList=handleList(oneMsgBeans);*/
+                        msgBeanList.addAll(msgBeanList);
+                        loadMoreWrapper.notifyDataSetChanged();
+
+                    }
+                },2000);
+            }
+        });
+
         adapter.setItemOnClick(this);
         adapter.setFootButtonClick(this);
 
